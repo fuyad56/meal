@@ -41,6 +41,24 @@ button {
   width: 19rem;
 }
 
+/* Show details */
+.meal-details {
+  position: relative;
+  left: 25rem;
+}
+
+.meal-details img {
+  width: 25rem;
+  height: 20rem;
+  margin-bottom: 30px;
+  border-radius: 15px;
+}
+
+/* Checkbox */
+.check-box li i{
+  color: #de0000;
+}
+
 /* Notification message styles */
 #notification {
   display: none;
@@ -50,9 +68,9 @@ button {
   transform: translate(-50%, -50%);
   width: 300px;
   padding: 20px;
-  background-color: #f44336;
+  background-color: #de0000;
   color: white;
-  border-radius: 5px;
+  border-radius: 15px;
   text-align: center;
   z-index: 1;
 }

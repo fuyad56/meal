@@ -28,20 +28,20 @@ const displayMealDetails = (mealId) => {
 
       // create a new div to display details
       const detailsDiv = document.createElement("div");
-      detailsDiv.className = "card meal-details shadow";
+      detailsDiv.className = "meal-details";
       detailsDiv.innerHTML = `
           <img src="${meal.strMealThumb}" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">${meal.strMeal}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Ingredients</h6>
-            <ul>
+            <h3 class="card-title">${meal.strMeal}</h3>
+            <h4 class="card-subtitle mt-2 mb-2 text-muted">Ingredients</h4>
+            <ul class="list-unstyled mt-3 check-box">
               ${getIngredientsList(meal)}
             </ul>
           </div>
         `;
 
       // add the details div to the meal container
-      const mealContainer = document.getElementById("meal-container");
+      const mealContainer = document.getElementById("meal-container-details");
       mealContainer.innerHTML = "";
       mealContainer.appendChild(detailsDiv);
     });
@@ -54,7 +54,7 @@ const displayMeals = (meals) => {
     const div = document.createElement("div");
     div.className = "card search-result shadow";
     div.innerHTML = `
-        <img src="${meal.strMealThumb}" class="card-img-top"  onclick="displayMealDetails('${meal.idMeal}')" alt="...">
+        <img src="${meal.strMealThumb}" class="card-img-top"  onclick="displayMealDetails('${meal.idMeal}')">
         <div class="card-body" onclick="displayMealDetails('${meal.idMeal}')">
           <h5 class="card-text text-center">${meal.strMeal}</h5>
         </div>
@@ -64,14 +64,13 @@ const displayMeals = (meals) => {
 };
 
 const getIngredientsList = (meal) => {
-  let ingredients = "";
+  let li = "";
   for (let i = 1; i <= 20; i++) {
     if (meal[`strIngredient${i}`]) {
-      ingredients += `<li>${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]
-        }</li>`;
+      li += `<li><span><i class="fas fa-check-square"></i></span> ${meal[`strMeasure${i}`]} ${meal[`strIngredient${i}`]}</li>`;
     } else {
       break;
     }
   }
-  return ingredients;
+  return li;
 };
